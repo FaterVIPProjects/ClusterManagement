@@ -15,14 +15,6 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"utils": {
-				"uri": "model/utils.json",
-				"type": "JSON"
-			},
-			"cluster": {
-				"uri": "model/cluster.json",
-				"type": "JSON"
-			},
 			"ZVIP_USERMGMT_SRV": {
 				"uri": "/sap/opu/odata/sap/ZVIP_USERMGMT_SRV/",
 				"type": "OData",
@@ -86,11 +78,11 @@
 			},
 			"oUtilsModel": {
 				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "utils"
+				"uri": "model/utils.json"
 			},
 			"oNewClusterModel": {
 				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "cluster"
+				"uri": "model/cluster.json"
 			},
 			"oDataModel": {
 				"type": "sap.ui.model.odata.v2.ODataModel",
