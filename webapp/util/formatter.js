@@ -1,3 +1,4 @@
+/* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
 sap.ui.define([
 	], function () {
 		"use strict";

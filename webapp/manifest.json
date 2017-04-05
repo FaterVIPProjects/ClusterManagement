@@ -23,20 +23,20 @@
 				"uri": "model/cluster.json",
 				"type": "JSON"
 			},
-			"ZVIP_PROJECT_SRV": {
-				"uri": "/sap/opu/odata/sap/ZVIP_PROJECT_SRV/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			},
 			"ZVIP_USERMGMT_SRV": {
 				"uri": "/sap/opu/odata/sap/ZVIP_USERMGMT_SRV/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0",
 					"localUri": "localService/ZVIP_USERMGMT_SRV/metadata.xml"
+				}
+			},
+			"ZVIP_PROJECT_SRV": {
+				"uri": "/sap/opu/odata/sap/ZVIP_PROJECT_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZVIP_PROJECT_SRV/metadata.xml"
 				}
 			}
 		}

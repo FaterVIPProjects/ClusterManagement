@@ -11,7 +11,7 @@
     "name": "ZCLUSTER_MANAG"
   },
   "mockpreview": {
-    "mockUri": "/sap/opu/odata/sap/ZVIP_USERMGMT_SRV",
+    "mockUri": "/sap/opu/odata/sap/ZVIP_PROJECT_SRV",
     "metadataFilePath": "model/metadata.xml",
     "mockRequestsFilePath": "",
     "loadJSONFiles": false,
@@ -21,7 +21,7 @@
     {
       "templateId": "servicecatalog.connectivityComponent",
       "templateVersion": "0.0.0",
-      "dateTimeStamp": "Fri, 03 Mar 2017 09:07:00 GMT"
+      "dateTimeStamp": "Wed, 05 Apr 2017 08:40:25 GMT"
     }
   ],
   "hybrid": {

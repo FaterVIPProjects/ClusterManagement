@@ -86,7 +86,7 @@ sap.ui.define([
 	     */
 		afterInit: function() {
 			//OVERRIDE IF NEEDED
-		},
+		}
 
 		
 	});
