@@ -57,10 +57,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_bluecrystal"
-		]
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
 	},
 	"sap.ui5": {
 		"_version": "1.1.0",
@@ -108,8 +105,7 @@
 					},
 					"useBatch": false
 				},
-				"dataSource": "ZVIP_PROJECT_SRV",
-				"preload": true
+				"dataSource": "ZVIP_PROJECT_SRV"
 			},
 			"oUserModel": {
 				"type": "sap.ui.model.odata.v2.ODataModel",
@@ -124,16 +120,13 @@
 					},
 					"useBatch": false
 				},
-				"dataSource": "ZVIP_USERMGMT_SRV",
-				"preload": true
+				"dataSource": "ZVIP_USERMGMT_SRV"
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -144,13 +137,11 @@
 				"controlAggregation": "pages",
 				"clearTarget": true
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "home",
-					"target": "home"
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "home",
+				"target": "home"
+			}],
 			"targets": {
 				"home": {
 					"viewName": "Main",
