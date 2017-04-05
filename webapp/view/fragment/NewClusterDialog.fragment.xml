@@ -1,0 +1,116 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form">
+	<Dialog title="{i18n>newCluster}"
+		contentWidth="70%">
+		<customHeader>
+			<Toolbar>
+				
+			</Toolbar>
+		</customHeader>
+		<content>
+			<f:SimpleForm editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanL="2"
+				labelSpanM="2"
+				labelSpanS="4">
+		
+				<Label text="{i18n>society}"/>
+				<Select change="checkSocietyChoosed" 
+					forceSelection="false"
+					selectedKey="{Bukrs}"
+					items="{oDataModel>/CompanySet}">
+					<core:Item key="{oDataModel>Bukrs}" text="{oDataModel>Butxt}" />
+					<layoutData>
+						<l:GridData	span="L8 M8 S8" />
+					</layoutData>											
+				</Select>
+				<Label text="{i18n>purchaseOrganization}"/>
+				<Select change="checkSocietyChoosed" 
+					forceSelection="false"
+					selectedKey="{Ekorg}"	
+					items="{oDataModel>/PurchaseOrganizationSet}">
+					<core:Item key="{oDataModel>Ekorg}" text="{oDataModel>Ekotx}" />
+					<layoutData>
+						<l:GridData	span="L8 M8 S8" />
+					</layoutData>											
+				</Select>		
+		
+				
+				<Label text="{i18n>Description}"/>
+				<Input value="{oNewClusterModel>/Description}">
+					<layoutData>
+						<l:GridData span="L9 M9 S7"/>
+					</layoutData>											
+				</Input>										
+				<Label text="{i18n>approver}">
+				</Label>
+				<ComboBox  selectedKey="{oNewClusterModel>/Resp}"
+					items="{
+					    path: 'oUserModel>/UserSet', 
+					    filters: [{
+					        path: 'Role', 
+					        operator: 'EQ',
+					        value1: 'COMMERCIAL_MANAGER'
+					    }]
+					}">
+						<core:Item key="{oUserModel>Username}" text="{oUserModel>Address/Lastname} {oUserModel>Address/Firstname}" />
+					<layoutData>
+						<l:GridData span="L9 M9 S7"/>
+					</layoutData>
+				</ComboBox>
+				<Text text="{i18n>Description}"
+					textAlign="End"
+					class="fakeLabel"										
+					visible="{= ${SelectedCompany} !== undefined}">
+					<layoutData>
+						<l:GridData span="L2 M2 S2"/>
+					</layoutData>
+				</Text>
+				<Input visible="{= ${SelectedCompany} !== undefined}"
+					value="{Days}"
+					type="Number"
+					enabled="{oUtilsModel>/editEnabled}">
+					<layoutData>
+						<l:GridData span="L4 M4 S4"/>
+					</layoutData>											
+				</Input>										
+				<Label text="{i18n>otherOption}"
+					visible="{= ${SelectedCompany} !== undefined}"/>
+				<CheckBox text="{i18n>purchasingTerms}"
+					selected="{PurchasingTerms}"
+					visible="{= ${SelectedCompany} !== undefined}">
+					<layoutData>
+						<l:GridData span="L3 M3 S3"/>
+					</layoutData>
+				</CheckBox>
+				<CheckBox text="{i18n>hse}"
+					selected="{HSE}"
+					visible="{= ${SelectedCompany} !== undefined}">
+					<layoutData>
+						<l:GridData span="L3 M3 S3"/>
+					</layoutData>
+				</CheckBox>
+				<CheckBox text="{i18n>scoreManagement}"
+					selected="{ScoreManagement}"
+					visible="{= ${SelectedCompany} !== undefined}">
+					<layoutData>
+						<l:GridData span="L3 M3 S3"/>
+					</layoutData>
+				</CheckBox>		
+
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="{i18n>cancel}"
+				press="onCancelCreateNewCluster">
+			</Button>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>confirm}"
+				press="onConfirmCreateNewCluster">
+			</Button>
+		</endButton>		
+    </Dialog>
+</core:FragmentDefinition>

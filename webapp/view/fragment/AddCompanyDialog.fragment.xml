@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form">
+	<Dialog type="Message"
+		contentWidth="40%"
+		title="{i18n>confirm}">
+		<content>
+			<f:SimpleForm editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanL="3"
+				labelSpanM="3"
+				labelSpanS="3">
+				<Label text="{i18n>society}"/>
+				<Select change="checkSocietyChoosed" 
+					id="addCompany"
+					forceSelection="false"
+					items="{oDataModel>/CompanySet}">
+					<core:Item key="{oDataModel>Bukrs}" text="{oDataModel>Butxt}" />
+					<layoutData>
+						<l:GridData	span="L8 M8 S8" />
+					</layoutData>											
+				</Select>
+				<Label text="{i18n>purchaseOrganization}"/>
+				<Select change="checkSocietyChoosed" 
+					id="addPurchOrg"
+					forceSelection="false"
+					items="{oDataModel>/PurchaseOrganizationSet}">
+					<core:Item key="{oDataModel>Ekorg}" text="{oDataModel>Ekotx}" />
+					<layoutData>
+						<l:GridData	span="L8 M8 S8" />
+					</layoutData>											
+				</Select>					
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="{i18n>cancel}"
+				press="cancelAddCompany">
+			</Button>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>confirm}"
+				press="confirmAddCompany">
+			</Button>
+		</endButton>		
+    </Dialog>
+</core:FragmentDefinition>

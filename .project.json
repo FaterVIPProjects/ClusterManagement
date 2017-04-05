@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "",
+    "defaultLanguage": "",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
+  },
+  "deploy": {
+    "destination": "FaterPlayExtranet",
+    "name": "ZCLUSTER_MANAG"
+  },
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/ZVIP_USERMGMT_SRV",
+    "metadataFilePath": "model/metadata.xml",
+    "mockRequestsFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false
+  },
+  "generation": [
+    {
+      "templateId": "servicecatalog.connectivityComponent",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Fri, 03 Mar 2017 09:07:00 GMT"
+    }
+  ],
+  "hybrid": {
+    "backendDestination": "ZVIP"
+  }
+}

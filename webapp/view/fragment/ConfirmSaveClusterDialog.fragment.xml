@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" 
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form">
+	<Dialog type="Message"
+		title="{i18n>confirm}">
+		<content>
+			<FlexBox
+				height="100px"
+				alignItems="Center"
+				justifyContent="Center">
+				<items>
+					<Text text="{i18n>confirmSaveText}"/>
+				</items>
+			</FlexBox>
+		</content>
+		<beginButton>
+			<Button text="{i18n>cancel}"
+				press="cancelCluster">
+			</Button>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>confirm}"
+				press="saveCluster">
+			</Button>
+		</endButton>		
+    </Dialog>
+</core:FragmentDefinition>

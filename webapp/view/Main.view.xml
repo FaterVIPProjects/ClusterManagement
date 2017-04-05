@@ -1,0 +1,209 @@
+<mvc:View controllerName="org.fater.app.controller.Main" 
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m">
+	<Page title="{i18n>pageTitle}">
+		<content>
+			<List items="{/ClusterSet}"
+				showNoData="false"
+				id="clusterList">
+				<CustomListItem>
+					<Panel backgroundDesign="Solid" 
+						expandable="true"
+						expanded="false">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="{Name}"/>
+								<ToolbarSpacer/>
+								<Button type="Emphasized" 
+									icon="sap-icon://user-edit"
+									visible="{= !${editEnabled}}"
+									press="handleEditClusterPress"/>
+								<Button type="Reject" 
+									icon="sap-icon://delete"
+									visible="{= ${newCluster} !== undefined &amp;&amp; ${newCluster}}"
+									press="handleDeleteNewClusterPress"/>	
+								<Button type="Emphasized" 
+									icon="sap-icon://add"
+									visible="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+									press="handleAddCompanyClusterPress"/>												
+								<Button type="Emphasized" 
+									icon="sap-icon://save"
+									visible="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+									press="handleSaveEditClusterPress"/>										
+							</Toolbar>
+						</headerToolbar>							
+						<content>		
+							<IconTabBar selectedKey="{oUtilsModel>/selectedTabKey}"
+								headerMode="Inline"
+								upperCase="true"
+								items="{ClusterCom/results}">
+								<items>			
+									<IconTabFilter key="{ClusterId}_{Bukrs}"
+										iconColor="{= (!${ValueStateResp} &amp;&amp; ${ValueStateResp} !== undefined) || 
+													  (!${ValueStateRespAnag} &amp;&amp; ${ValueStateRespAnag} !== undefined) || 
+													  (!${ValueStateDays} &amp;&amp; ${ValueStateDays} !== undefined) ? 'Critical' : Default}"
+										text="{Butxt}"
+										count="{Ekotx}">
+										<content>
+											
+											<f:SimpleForm editable="true"
+												layout="ResponsiveGridLayout"
+												labelSpanL="2"
+												labelSpanM="2"
+												labelSpanS="2">		
+<!--										<Label text="{i18n>Description}"/>
+												<Input	value="{Description}"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}">
+													<layoutData>
+														<l:GridData span="L10 M10 S10"/>
+													</layoutData>											
+												</Input>	-->									
+												<Label text="{i18n>approver}"
+													required="true">
+												</Label>
+												<ComboBox change="checkField"
+													selectionChange="checkField"
+													valueState ="{= (${ValueStateResp} || ${ValueStateResp} === undefined)  ? 'None' : 'Error'}"
+													value="{
+														path: 'Resp',
+														formatter: '.formatter.commercialManager'
+													}"
+													selectedKey="{Resp}"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+													items="{
+													    path: 'oUserModel>/UserSet', 
+													    filters: [{
+													        path: 'Role', 
+													        operator: 'EQ',
+													        value1: 'COMMERCIAL_MANAGER'
+													    }]
+													}">
+														<core:Item key="{oUserModel>Username}" text="{oUserModel>Address/Firstname} {oUserModel>Address/Lastname}" />
+													<layoutData>
+														<l:GridData span="L3 M3 S3"/>
+													</layoutData>
+												</ComboBox>
+												<Text text="{i18n>anagManager}:"
+													textAlign="End"
+													class="fakeLabel required">
+													<layoutData>
+														<l:GridData span="L3 M3 S3"/>
+													</layoutData>
+												</Text>			
+												<ComboBox 
+													change="checkField"
+													selectionChange="checkField"
+													valueState ="{= (${ValueStateRespAnag} || ${ValueStateRespAnag} === undefined)  ? 'None' : 'Error'}"
+													value="{
+														path: 'RespAnag',
+														formatter: '.formatter.commercialManager'
+													}"
+													selectedKey="{RespAnag}"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+													items="{
+													    path: 'oUserModel>/UserSet', 
+													    filters: [{
+													        path: 'Role', 
+													        operator: 'EQ',
+													        value1: 'ANAGRAPHIC_MANAGER'
+													    }]
+													}">
+														<core:Item key="{oUserModel>Username}" text="{oUserModel>Address/Firstname} {oUserModel>Address/Lastname}" />
+													<layoutData>
+														<l:GridData span="L3 M3 S3"/>
+													</layoutData>
+												</ComboBox>														
+												<Label text="{i18n>firstReminder}"
+													required="true">
+												</Label>
+												<Input value="{FirstReminder}"
+													maxLength="4"
+													textAlign="Center"
+													liveChange="checkField"
+													valueState ="{= (${ValueStateFirstReminder} || ${ValueStateFirstReminder} === undefined) ? 'None' : 'Error'}"
+													type="Number"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}">
+													<layoutData>
+														<l:GridData span="L1 M1 S1"/>
+													</layoutData>											
+												</Input>
+												<Text text="{i18n>secondReminder}:"
+													textAlign="End"
+													class="fakeLabel required">
+													<layoutData>
+														<l:GridData span="L4 M4 S4" 
+															indent="L1 M1 S1"/>
+													</layoutData>
+												</Text>																
+												<Input value="{SecondReminder}"
+													maxLength="4"
+													textAlign="Center"
+													liveChange="checkField"
+													valueState ="{= (${ValueStateSecondReminder} || ${ValueStateSecondReminder} === undefined) ? 'None' : 'Error'}"
+													type="Number"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}">
+													<layoutData>
+														<l:GridData span="L1 M1 S1"/>
+													</layoutData>											
+												</Input>														
+												<Label text="{i18n>otherOption}"/>
+												<CheckBox text="{i18n>purchasingTerms}"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+													selected="{PurchTerms}">
+													<layoutData>
+														<l:GridData span="L2 M2 S2"/>
+													</layoutData>
+												</CheckBox>
+												<CheckBox text="{i18n>hse}"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+													selected="{Hse}">
+													<layoutData>
+														<l:GridData span="L2 M2 S2"/>
+													</layoutData>
+												</CheckBox>
+												<CheckBox text="{i18n>scoreManagement}"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+													selected="{ScoreManagement}">
+													<layoutData>
+														<l:GridData span="L3 M3 S3"/>
+													</layoutData>
+												</CheckBox>	
+												<CheckBox text="{i18n>qualityEnabled}"
+													enabled="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}"
+													selected="{Quality}">
+													<layoutData>
+														<l:GridData span="L3 M3 S3"/>
+													</layoutData>
+												</CheckBox>													
+											</f:SimpleForm>
+											<Toolbar visible="{= ${editEnabled} !== undefined &amp;&amp; ${editEnabled}}">
+												<ToolbarSpacer/>
+												<Button text="{i18n>removeCompany}"
+													press="handleRemoveCompany"
+													type="Reject"/>
+											</Toolbar>
+											
+										</content>
+									</IconTabFilter>
+								</items>
+							</IconTabBar>
+						</content>
+					</Panel>
+				</CustomListItem>
+			</List>
+		</content>
+		
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button type="Emphasized" 
+					icon="sap-icon://add"	
+					text="{i18n>addCluster}"
+					press="handleAddCluster"/> 							
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
