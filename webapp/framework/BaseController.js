@@ -1,4 +1,3 @@
-/* eslint no-empty: ["error", { "allowEmptyCatch": true }] */
 sap.ui.define([
 	"jquery.sap.global",
     "sap/ui/core/mvc/Controller",
@@ -6,7 +5,7 @@ sap.ui.define([
 ], function (jQuery, Controller, History) {
 	"use strict";
 	
-	return Controller.extend("org.fater.app.framework.BaseController", {
+	return Controller.extend("org.fater.clustermanagement.framework.BaseController", {
 		
 		__targetName: null,
 		__isMainAppController: false,
@@ -131,9 +130,9 @@ sap.ui.define([
 		 */
 		getTranslation: function (sKey, aParameters) {
 			if( aParameters === undefined || aParameters === null ) {
-				return this.getResourceBundle().getText(sKey);
+				return this.getResourceBundle().getText(sKey)
 			} else {
-				return this.getResourceBundle().getText(sKey, aParameters);
+				return this.getResourceBundle().getText(sKey, aParameters)
 			}
 			
 		},
@@ -231,7 +230,7 @@ sap.ui.define([
 				duration = 5000;
 
 			toastr[type](description, title, {timeOut: duration});
-		}
+		},
 		
 	});
 });

@@ -1,6 +1,6 @@
 sap.ui.define([
-	"org/fater/app/framework/BaseController",
-	"org/fater/app/util/formatter",
+	"org/fater/clustermanagement/framework/BaseController",
+	"org/fater/clustermanagement/util/formatter",
 	"sap/ui/model/Filter",
 	"sap/m/MessageToast",
 	'sap/ui/model/SimpleType',
@@ -9,7 +9,7 @@ sap.ui.define([
 ], function(Controller, formatter, Filter, MessageToast, SimpleType,ValidateException, JSONModel) {
 	"use strict";
 
-	return Controller.extend("org.fater.app.controller.Main", {
+	return Controller.extend("org.fater.clustermanagement.controller.Main", {
 		
 		formatter: formatter,
 		__targetName: "home",
@@ -51,7 +51,7 @@ sap.ui.define([
 		handleAddCompanyClusterPress: function(oEvent){
 			this._selectedClusterPath = oEvent.getSource().getBindingContext().getPath();
 			this._selectedClusterIndex = parseInt(this._selectedClusterPath.substr(this._selectedClusterPath.lastIndexOf("/" + 1))) + 1;
-			this._dialog = sap.ui.xmlfragment("org.fater.app.view.fragment.AddCompanyDialog", this);
+			this._dialog = sap.ui.xmlfragment("org.fater.clustermanagement.view.fragment.AddCompanyDialog", this);
 			this._oView.addDependent(this._dialog);
 			this._dialog.open();			
 		},
@@ -122,7 +122,7 @@ sap.ui.define([
 		
 		handleSaveEditClusterPress:	function(oEvent){
 			this._selectedClusterPath = oEvent.getSource().getBindingContext().getPath();
-			this._dialog = sap.ui.xmlfragment("org.fater.app.view.fragment.ConfirmSaveClusterDialog", this);
+			this._dialog = sap.ui.xmlfragment("org.fater.clustermanagement.view.fragment.ConfirmSaveClusterDialog", this);
 			this._oView.addDependent(this._dialog);
 			this._dialog.open();			
 		},
@@ -131,7 +131,7 @@ sap.ui.define([
 		handleDeleteNewClusterPress: function(oEvent){
 			var sPath = oEvent.getSource().getBindingContext().getPath();
 			this._selectedClusterIndex = sPath.substr(sPath.lastIndexOf("/") + 1);			
-			this._dialog = sap.ui.xmlfragment("org.fater.app.view.fragment.ConfirmDeleteNewClusterDialog", this);
+			this._dialog = sap.ui.xmlfragment("org.fater.clustermanagement.view.fragment.ConfirmDeleteNewClusterDialog", this);
 			this._oView.addDependent(this._dialog);
 			this._dialog.open();	
 		},
@@ -172,7 +172,7 @@ sap.ui.define([
 			this._selectedClusterIndex = clusterSet.push(newCluster) - 1;
 			//this._selectedClusterIndex = clusterSet.indexOf(newCluster);
 			this.getView().getModel().refresh();
-			this._dialog = sap.ui.xmlfragment("org.fater.app.view.fragment.OtherNewClusterDialog", this);
+			this._dialog = sap.ui.xmlfragment("org.fater.clustermanagement.view.fragment.OtherNewClusterDialog", this);
 			sap.ui.getCore().byId("newClusterName").bindElement("/ClusterSet/" + this._selectedClusterIndex);
 			sap.ui.getCore().byId("newClusterCompany").bindElement("/ClusterSet/" + this._selectedClusterIndex);
 			sap.ui.getCore().byId("newClusterPurchOrg").bindElement("/ClusterSet/" + this._selectedClusterIndex);
