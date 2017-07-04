@@ -1,3 +1,5 @@
+/*eslint no-empty: "error"*/
+
 sap.ui.define([
 	], function () {
 		"use strict";

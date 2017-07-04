@@ -1,3 +1,5 @@
+/*eslint no-empty: "error"*/
+
 sap.ui.define([
 	"jquery.sap.global",
     "sap/ui/core/mvc/Controller",
@@ -5,7 +7,7 @@ sap.ui.define([
 ], function (jQuery, Controller, History) {
 	"use strict";
 	
-	return Controller.extend("org.fater.app.framework.BaseController", {
+	return Controller.extend("org.fater.clustermanagement.framework.BaseController", {
 		
 		__targetName: null,
 		__isMainAppController: false,
